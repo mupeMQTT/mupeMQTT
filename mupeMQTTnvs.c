@@ -31,6 +31,7 @@
 
 #define MQTTDATA "MQTTData"
 #define MQTTDATATOPIC "MQTTDataTopic"
+#define MODBUSCFG "Modbuscfg"
 
 
 static const char *TAG = "mupeMQTTnvs";
@@ -269,6 +270,10 @@ void removeNVAMQTTAll() {
 	nvs_commit(my_handle);
 	nvs_close(my_handle);
 	nvs_open(MQTTDATA, NVS_READWRITE, &my_handle);
+	nvs_erase_all(my_handle);
+	nvs_commit(my_handle);
+	nvs_close(my_handle);
+	nvs_open(MODBUSCFG, NVS_READWRITE, &my_handle);
 	nvs_erase_all(my_handle);
 	nvs_commit(my_handle);
 	nvs_close(my_handle);
